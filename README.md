@@ -1,2 +1,2 @@
-# koncerto-framework.github.io
+# Koncerto Framework
 Koncerto Framework website
