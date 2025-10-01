@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <script async type="module" src="https://cdn.jsdelivr.net/npm/php-wasm@0.0.9-alpha-20/php-tags.mjs"></script>
+        <script type="text/javascript">
+            var files = [
+                {
+                    name: 'koncerto.php',
+                    parent: '/preload/',
+                    url : 'https://corsproxy.io/?url=https://github.com/koncerto-framework/koncerto-playground/raw/refs/heads/main/koncerto.php'
+                }
+            ];
+            var script = document.createElement('script');
+            script.setAttribute('type', 'text/php');
+            script.setAttribute('data-files', JSON.stringify(files));
+            script.setAttribute('data-stdout', 'body');
+            script.innerText = `<?php
+
+                $storage = array(
+                    '_cache' => array(),
+                    '_controller' => array(
+                        'HomeController.php'
+                    )
+                );
+
+                foreach ($storage as $dir => $files) {
+                    if (!is_dir($dir)) {
+                        mkdir($dir);
+                    }
+                    foreach ($files as $file) {
+                        file_put_contents(
+                            sprintf('%s/%s', $dir, $file),
+                            file_get_contents(sprintf(
+                                'https://corsproxy.io/?url=https://github.com/koncerto-framework/koncerto-framework.github.io/raw/refs/heads/main/%s/%s',
+                                $dir,
+                                $file
+                            ))
+                        );
+                    }
+                }
+
+                require_once('/preload/koncerto.php');
+
+                echo Koncerto::response();
+            `;
+            var head = document.getElementsByTagName('head')[0];
+            head.appendChild(script);
+        </script>
+    </head>
+</html>
