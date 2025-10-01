@@ -7,6 +7,8 @@ class HomeController extends KoncertoController
      * @return KoncertoReponse
      */
     public function index() {
-        return (new KoncertoResponse())->setContent('Welcome');
+        return $this->render('_templates/index.tbs.html', array(
+            'title' => 'Welcome'
+        ));
     }
 }

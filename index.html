@@ -1,24 +1,40 @@
 <html>
     <head>
+        <meta name="google-site-verification" content="QU1F7uhFGM5se6kjAHMdumz-5qhnifAqHdgAQdewGRk" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
         <script async type="module" src="https://cdn.jsdelivr.net/npm/php-wasm@0.0.9-alpha-20/php-tags.mjs"></script>
         <script type="text/javascript">
+
+            function proxy(url) {
+                return `https://corsproxy.io/?url=${encodeURIComponent(url)}`;
+            }
+
             var files = [
                 {
                     name: 'koncerto.php',
                     parent: '/preload/',
-                    url : 'https://corsproxy.io/?url=https://github.com/koncerto-framework/koncerto-playground/raw/refs/heads/main/koncerto.php'
+                    url : proxy('https://github.com/koncerto-framework/koncerto-playground/raw/refs/heads/main/koncerto.php')
+                },
+                {
+                    name: 'tbs_class.php',
+                    parent: '/preload/',
+                    url : proxy('https://github.com/Skrol29/tinybutstrong/raw/refs/heads/master/tbs_class.php')
                 }
             ];
             var script = document.createElement('script');
             script.setAttribute('type', 'text/php');
             script.setAttribute('data-files', JSON.stringify(files));
-            script.setAttribute('data-stdout', 'body');
+            script.setAttribute('data-stdout', ':root');
             script.innerText = `<?php
 
                 $storage = array(
                     '_cache' => array(),
                     '_controller' => array(
                         'HomeController.php'
+                    ),
+                    '_templates' => array(
+                        '_layout.tbs.html',
+                        'index.tbs.html'
                     )
                 );
 
@@ -46,4 +62,13 @@
             head.appendChild(script);
         </script>
     </head>
+    <body>
+        <div class="container is-fluid" style="height: 100vh;">
+            <div class="columns is-mobile is-vcentered" style="height: 100%;">
+                <div class="column"></div>
+                <div class="column is-narrow"><span class="loader" style="width: 100px; height: 100px;"></span></div>
+                <div class="column"></div>
+            </div>
+        </div>
+    </body>
 </html>
