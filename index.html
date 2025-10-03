@@ -1,5 +1,6 @@
 <html>
     <head>
+        <meta name="description" content="Koncerto is a simple PHP framework. The main concept is to have a light PHP framework in a single PHP script. Koncerto uses TinyButStrong for its template engine. https://github.com/koncerto-framework">
         <meta name="google-site-verification" content="QU1F7uhFGM5se6kjAHMdumz-5qhnifAqHdgAQdewGRk" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
         <script async type="module" src="https://cdn.jsdelivr.net/npm/php-wasm@0.0.9-alpha-20/php-tags.mjs"></script>
@@ -58,6 +59,17 @@
 
                 echo Koncerto::response();
             `;
+
+            document.querySelectorAll('.navbar-dropdown a').forEach(function (a) {
+                a.addEventListener('click', function() {
+                    a.parentNode.style.display = 'none';
+                    setTimeout(function() {
+                        a.parentNode.style.display = '';
+                        a.blur();
+                    }, 100);
+                })
+            });
+
             var head = document.getElementsByTagName('head')[0];
             head.appendChild(script);
         </script>
