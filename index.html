@@ -7,7 +7,7 @@
         <script type="text/javascript">
 
             function proxy(url) {
-                return `https://corsproxy.io/?url=${encodeURIComponent(url)}`;
+                return `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(url)}`;
             }
 
             var files = [
@@ -47,7 +47,7 @@
                         file_put_contents(
                             sprintf('%s/%s', $dir, $file),
                             file_get_contents(sprintf(
-                                'https://corsproxy.io/?url=https://github.com/koncerto-framework/koncerto-framework.github.io/raw/refs/heads/main/%s/%s',
+                                'https://api.codetabs.com/v1/proxy?quest=https://github.com/koncerto-framework/koncerto-framework.github.io/raw/refs/heads/main/%s/%s',
                                 $dir,
                                 $file
                             ))
@@ -81,6 +81,16 @@
                 <div class="column is-narrow"><span class="loader" style="width: 100px; height: 100px;"></span></div>
                 <div class="column"></div>
             </div>
+        </div>
+        <div class="is-hidden">
+            <section class="section">
+                <h1 class="title">Koncerto</h1>
+                <p class="subtitle">Welcome</p>
+                <p>Koncerto is a simple PHP framework.</p>
+                <p>The main concept is to have a light PHP framework in a single PHP script.</p>
+                <p>Koncerto uses TinyButStrong for its template engine.</p>
+                <p><a href="https://github.com/koncerto-framework/koncerto-framework/wiki/Introduction" target="_blank">Documentation</a></p>
+            </section>
         </div>
     </body>
 </html>
