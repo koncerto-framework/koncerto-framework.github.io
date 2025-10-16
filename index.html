@@ -20,6 +20,11 @@
                     name: 'tbs_class.php',
                     parent: '/preload/',
                     url : proxy('https://github.com/Skrol29/tinybutstrong/raw/refs/heads/master/tbs_class.php')
+                },
+                {
+                    name: 'Introduction.md',
+                    parent: '/preload/',
+                    url: proxy('https://raw.githubusercontent.com/wiki/koncerto-framework/koncerto-framework/Introduction.md')
                 }
             ];
             var script = document.createElement('script');
@@ -31,11 +36,13 @@
                 $storage = array(
                     '_cache' => array(),
                     '_controller' => array(
-                        'HomeController.php'
+                        'HomeController.php',
+                        'DocumentationController.php'
                     ),
                     '_templates' => array(
                         '_layout.tbs.html',
-                        'index.tbs.html'
+                        'index.tbs.html',
+                        'doc.tbs.html'
                     )
                 );
 
@@ -60,15 +67,46 @@
                 echo Koncerto::response();
             `;
 
-            document.querySelectorAll('.navbar-dropdown a').forEach(function (a) {
-                a.addEventListener('click', function() {
-                    a.parentNode.style.display = 'none';
-                    setTimeout(function() {
-                        a.parentNode.style.display = '';
-                        a.blur();
-                    }, 100);
-                })
-            });
+            window.reloadScript = function(selector) {
+                document.querySelector(selector);
+                eval(selector.text);
+            }
+
+            var targetNode = document.querySelector(':root');
+            var config = { childList: true, subtree: true };
+            var callback = function(mutationList, observer) {
+                Array.from(mutationList).forEach(function(mutation) {
+                    var scripts = mutation.target.querySelectorAll('script');
+                    scripts.forEach(function (script) {
+                        if ('' !== script.src && script.hasAttribute('data-reload')) {
+                            fetch(script.src).then(function (result) {
+                                result.text().then(function (js) {
+                                    eval(js);
+                                    if (script.hasAttribute('onload')) {
+                                        eval(script.getAttribute('onload'));
+                                    }
+                                })
+                            });
+                        }
+                        if ('' === script.src) {
+                            if (-1 !== script.text.indexOf('//' + ' require is provided by loader.min.js.')) {
+                                setTimeout(function() {
+                                    observer.disconnect();
+                                    eval(script.text);
+                                }, 1000);
+                            } else {
+                                if (script.hasAttribute('data-reload')) {
+                                    observer.disconnect();
+                                    eval(script.text);
+                                }
+                            }
+                        }
+                    });
+                });
+            };
+
+            var observer = new MutationObserver(callback);
+            observer.observe(targetNode, config);
 
             var head = document.getElementsByTagName('head')[0];
             head.appendChild(script);

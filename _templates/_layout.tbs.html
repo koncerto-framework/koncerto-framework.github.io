@@ -17,8 +17,8 @@
                         <span><strong>k</strong>oncerto</span>
                     </a>
 
-                    <a role="button" class="navbar-burger has-text-white" aria-label="menu" aria-expanded="false" data-target="#menu"
-                    onclick="document.querySelector(this.getAttribute('data-target')).classList.toggle('is-active');">
+                    <a role="button" class="navbar-burger has-text-white" aria-label="menu" aria-expanded="false"
+                    data-action="click->home#burger">
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
@@ -26,7 +26,7 @@
                     </a>
                 </div>
 
-                <div id="menu" class="navbar-menu">
+                <div data-target="menu" class="navbar-menu">
                     <div class="navbar-start">
                         <a href="/" class="navbar-item">
                             Home
@@ -45,14 +45,14 @@
                             More
                             </a>
 
-                            <div class="navbar-dropdown">
-                            <a href="https://github.com/koncerto-framework" target="_blank" class="navbar-item">
-                                Github
-                            </a>
-                            <hr class="navbar-divider">
-                            <a href="https://github.com/koncerto-framework/koncerto-framework/issues/new/choose" target="_blank" class="navbar-item">
-                                Report an issue
-                            </a>
+                            <div class="navbar-dropdown" data-target="dropdown">
+                                <a href="https://github.com/koncerto-framework" target="_blank" class="navbar-item">
+                                    Github
+                                </a>
+                                <hr class="navbar-divider">
+                                <a href="https://github.com/koncerto-framework/koncerto-framework/issues/new/choose" target="_blank" class="navbar-item">
+                                    Report an issue
+                                </a>
                             </div>
                         </div>
                     </div>
