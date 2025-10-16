@@ -2,7 +2,15 @@
  * Home controller
  */
 return function(controller) {
-    console.debug(controller);
+    controller.targets.doc.innerHTML = (new showdown.Converter()).makeHtml(controller.targets.doc.innerText);
+
+    document.querySelectorAll('.content a[href^=Koncerto]').forEach(function(a) {
+        a.setAttribute('href', '#/doc?page=' + a.getAttribute('href'));
+    });
+
+    document.querySelectorAll('.content a[href^=http]').forEach(function(a) {
+        a.setAttribute('target', '_blank');
+    });
 
     controller.targets.dropdown.querySelectorAll('a').forEach(function (a) {
         a.addEventListener('click', function() {

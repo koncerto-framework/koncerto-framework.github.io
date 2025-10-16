@@ -5,11 +5,12 @@
     </head>
     <body data-controller="home" class="has-navbar-fixed-top"
     data-proxy="https://api.codetabs.com/v1/proxy?quest=https://github.com/koncerto-framework/koncerto-framework.github.io/raw/refs/heads/main/_controller/">
+        <script data-reload src="https://cdn.jsdelivr.net/npm/showdown@latest/dist/showdown.min.js"></script>
         [onload;file=_layout.tbs.html;getpart=(header)]
-        <section class="section">
+        <section data-impulsus="false" class="section">
             <h1 class="title">Koncerto</h1>
             <p class="subtitle">Documentation</p>
-            <p>[md;noerr]</p>
+            <div class="content" data-target="doc">[md;noerr]</div>
         </section>
         [onload;file=_layout.tbs.html;getpart=(footer)]
     </body>
