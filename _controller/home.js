@@ -6,6 +6,11 @@ return function(controller) {
 
     document.querySelectorAll('.content a[href^=Koncerto]').forEach(function(a) {
         a.setAttribute('href', '#/doc?page=' + a.getAttribute('href'));
+        a.addEventListener('click', function() {
+            setTimeout(function() {
+                location.reload();
+            }, 100);
+        });
     });
 
     document.querySelectorAll('.content a[href^=http]').forEach(function(a) {
