@@ -10,6 +10,15 @@
                 return `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(url)}`;
             }
 
+            var useHash = true;
+            var pathInfo = new String(location.pathname);
+            if (useHash) {
+                pathInfo = new String(location.hash).substring(1);
+            }
+            if ('' === pathInfo) {
+                pathInfo = '/';
+            }
+
             var files = [
                 {
                     name: 'koncerto.php',
@@ -63,6 +72,11 @@
                 }
 
                 require_once('/preload/koncerto.php');
+
+                Koncerto::setConfig(array(
+                    'routing' => array('useHash' => '${useHash}'),
+                    'request' => array('pathInfo' => '${pathInfo}')
+                ));
 
                 echo Koncerto::response();
             `;
