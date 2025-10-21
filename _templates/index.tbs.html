@@ -4,7 +4,7 @@
         [onload;file=_layout.tbs.html;getpart=head]
     </head>
     <body data-controller="home" class="has-navbar-fixed-top"
-    data-proxy="https://api.codetabs.com/v1/proxy?quest=https://github.com/koncerto-framework/koncerto-framework.github.io/raw/refs/heads/main/_controller/">
+    data-proxy="https://cdn.jsdelivr.net/gh/koncerto-framework/koncerto-framework.github.io/%s">
         [onload;file=_layout.tbs.html;getpart=(header)]
         <section data-impulsus="false" class="section">
             <h1 class="title">Koncerto</h1>
@@ -12,7 +12,7 @@
             <p>Koncerto is a simple PHP framework.</p>
             <p>The main concept is to have a light PHP framework in a single PHP script.</p>
             <p>Koncerto uses TinyButStrong for its template engine.</p>
-            <p><a href="/#/doc" onclick="setTimeout(function() { history.go(0); }, 500);">Documentation</a></p>
+            <p><a href="[onshow.~router.generate(/doc)]" onclick="setTimeout(function() { history.go(0); }, 500);">Documentation</a></p>
         </section>
         [onload;file=_layout.tbs.html;getpart=(footer)]
     </body>

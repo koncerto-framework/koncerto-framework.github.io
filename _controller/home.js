@@ -2,16 +2,25 @@
  * Home controller
  */
 return function(controller) {
-    controller.targets.doc.innerHTML = (new showdown.Converter()).makeHtml(controller.targets.doc.innerText);
+    setTimeout(function() {
+        controller.targets.doc.innerHTML = (new showdown.Converter()).makeHtml(controller.targets.doc.innerText);
+    }, 1000);
 
-    document.querySelectorAll('.content a[href^=Koncerto]').forEach(function(a) {
-        a.setAttribute('href', '#/doc?page=' + a.getAttribute('href'));
-        a.addEventListener('click', function() {
-            setTimeout(function() {
-                location.reload();
-            }, 100);
-        });
-    });
+    var RELOAD_DELAY = 500;
+
+    function handleHashReload() {
+        var currentHash = window.location.hash;
+
+        setTimeout(function() {
+            location.reload();
+        }, RELOAD_DELAY); 
+    }
+
+    if (window.addEventListener) {
+        window.addEventListener('hashchange', handleHashReload);
+    } else if (window.attachEvent) {
+        window.attachEvent('onhashchange', handleHashReload);
+    }
 
     document.querySelectorAll('.content a[href^=http]').forEach(function(a) {
         a.setAttribute('target', '_blank');
