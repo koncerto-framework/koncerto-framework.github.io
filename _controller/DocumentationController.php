@@ -1,9 +1,12 @@
 <?php
 
+/**
+ * @internal {"route":{"name":"/doc"}}
+ */
 class DocumentationController extends KoncertoLive
 {
     /**
-     * @internal {"route":{"name":"/doc"}}
+     * @internal {"route":{"name":"/"}}
      * @return KoncertoReponse
      */
     public function index() {

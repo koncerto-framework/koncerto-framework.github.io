@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * @internal {"route":{"name":"/"}}
+ */
 class HomeController extends KoncertoLive
 {
     /**
