@@ -1,0 +1,12 @@
+{
+    "_proxy": "https://cdn.jsdelivr.net/gh/koncerto-framework/koncerto-framework.github.io/%s/%s",
+    "_controller": [
+        "HomeController.php",
+        "DocumentationController.php"
+    ],
+    "_templates": [
+        "_layout.tbs.html",
+        "index.tbs.html",
+        "doc.tbs.html"
+    ]
+}
