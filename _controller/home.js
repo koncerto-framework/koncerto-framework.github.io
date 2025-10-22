@@ -4,6 +4,10 @@
 return function(controller) {
     setTimeout(function() {
         controller.targets.doc.innerHTML = (new showdown.Converter()).makeHtml(controller.targets.doc.innerText);
+
+        document.querySelectorAll('.content a[href^=http]').forEach(function(a) {
+            a.setAttribute('target', '_blank');
+        });
     }, 1000);
 
     var RELOAD_DELAY = 500;
@@ -21,10 +25,6 @@ return function(controller) {
     } else if (window.attachEvent) {
         window.attachEvent('onhashchange', handleHashReload);
     }
-
-    document.querySelectorAll('.content a[href^=http]').forEach(function(a) {
-        a.setAttribute('target', '_blank');
-    });
 
     controller.targets.dropdown.querySelectorAll('a').forEach(function (a) {
         a.addEventListener('click', function() {
