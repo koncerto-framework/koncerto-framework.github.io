@@ -4,13 +4,12 @@
         [onload;file=_layout.tbs.html;getpart=head]
     </head>
     <body data-controller="home" class="has-navbar-fixed-top" data-proxy="https://cdn.jsdelivr.net/gh/koncerto-framework/koncerto-framework.github.io/%s">
-        <script data-reload src="https://cdn.jsdelivr.net/npm/showdown@latest/dist/showdown.min.js"></script>
         [onload;file=_layout.tbs.html;getpart=(header)]
-        <section data-impulsus="false" class="section">
+        <section data-impulsus="false" class="section pb-3">
             <h1 class="title">Koncerto</h1>
             <p class="subtitle">Documentation</p>
         </section>
-        <section class="section content" data-target="doc">[md;noerr]</section>
+        <section class="section content pt-0" data-target="doc">[md;noerr]</section>
         [onload;file=_layout.tbs.html;getpart=(footer)]
     </body>
 </html>
