@@ -2,6 +2,7 @@
 <html>
     <head>
         [onload;file=_layout.tbs.html;getpart=head]
+        <link href="https://prismjs@v1.x/themes/prism.css" rel="stylesheet" />
     </head>
     <body data-controller="home" class="has-navbar-fixed-top" data-proxy="https://cdn.jsdelivr.net/gh/koncerto-framework/koncerto-framework.github.io@latest/%s">
         [onload;file=_layout.tbs.html;getpart=(header)]
@@ -11,5 +12,7 @@
         </section>
         <section class="section content pt-0" data-target="doc">[md;noerr]</section>
         [onload;file=_layout.tbs.html;getpart=(footer)]
+        <script data-reload src="https://prismjs@v1.x/components/prism-core.min.js"></script>
+        <script data-reload src="https://prismjs@v1.x/plugins/autoloader/prism-autoloader.min.js"></script>
     </body>
 </html>
