@@ -10,7 +10,7 @@ class DocumentationController extends KoncertoLive
      * @return KoncertoReponse
      */
     public function index() {
-$page = (new KoncertoRequest())->get('page'); // Utiliser $this->request si centralisé
+        $page = (new KoncertoRequest())->get('page'); // Utiliser $this->request si centralisé
         if (null === $page) {
             $page = 'Introduction';
         }
