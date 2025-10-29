@@ -13,22 +13,6 @@ return function(controller) {
         });
     }, 1000);
 
-    var RELOAD_DELAY = 500;
-
-    function handleHashReload() {
-        var currentHash = window.location.hash;
-
-        setTimeout(function() {
-            location.reload();
-        }, RELOAD_DELAY); 
-    }
-
-    if (window.addEventListener) {
-        window.addEventListener('hashchange', handleHashReload);
-    } else if (window.attachEvent) {
-        window.attachEvent('onhashchange', handleHashReload);
-    }
-
     controller.targets.dropdown.querySelectorAll('a').forEach(function (a) {
         a.addEventListener('click', function() {
             a.parentNode.style.display = 'none';
