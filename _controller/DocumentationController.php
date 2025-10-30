@@ -6,7 +6,7 @@
 class DocumentationController extends KoncertoLive
 {
     /**
-     * @internal {"route":{"name":"/"}}
+     * @internal {"route":{"name":""}}
      * @return KoncertoReponse
      */
     public function index() {

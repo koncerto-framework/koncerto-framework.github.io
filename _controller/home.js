@@ -5,7 +5,9 @@ return function(controller) {
     setTimeout(function() {
         if ('doc' in controller.targets) {
             controller.targets.doc.innerHTML = (new showdown.Converter()).makeHtml(decodeURIComponent(controller.targets.doc.dataset.md.replace(/\+/g, ' ')));
-            hljs.highlightAll();
+            setTimeout(function() {
+                hljs.highlightAll();
+            }, 1000);
         }
 
         document.querySelectorAll('.content a[href^=http]').forEach(function(a) {
